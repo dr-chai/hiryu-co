@@ -6,6 +6,7 @@ export interface Product {
   brand: string;
   name: string;
   price: { currency: "HKD"; amount: number };
+  stock: number;
   material: string[];
   story: string;
   category: string; // collection slug

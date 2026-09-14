@@ -66,7 +66,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
             </dl>
 
             <div className="mt-8">
-              <AddToCartButton id={product.id} />
+              <AddToCartButton product={product} tone="light" />
             </div>
           </div>
         </div>

@@ -19,17 +19,23 @@ export default function Header() {
           HIRYU <span className="text-teal">／</span> 輝琉
         </Link>
 
-        <div className="flex items-center gap-6 text-sm text-offwhite/80">
+        <div className="flex items-center gap-4 text-sm text-offwhite/80 sm:gap-6">
           <Link href="/shop" className="transition-colors hover:text-offwhite">
             選物
           </Link>
           <Link href="/room" className="transition-colors hover:text-offwhite">
             入店
           </Link>
-          <a href="#makers" className="transition-colors hover:text-offwhite">
+          <a
+            href="/#makers"
+            className="hidden transition-colors hover:text-offwhite sm:block"
+          >
             Makers
           </a>
-          <a href="#studio" className="transition-colors hover:text-offwhite">
+          <a
+            href="/#studio"
+            className="hidden transition-colors hover:text-offwhite sm:block"
+          >
             Studio
           </a>
         </div>
@@ -40,7 +46,11 @@ export default function Header() {
           aria-label="開啟購物袋"
         >
           袋
-          {count > 0 && <span className="ml-1.5 text-teal">{count}</span>}
+          {count > 0 && (
+            <span aria-live="polite" className="ml-1.5 text-teal">
+              {count}
+            </span>
+          )}
         </button>
       </nav>
     </header>

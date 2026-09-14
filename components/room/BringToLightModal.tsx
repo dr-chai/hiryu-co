@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { formatHKD } from "@/lib/format";
 import ProductVisual from "@/components/ProductVisual";
@@ -13,23 +14,38 @@ export default function BringToLightModal({
   product: Product;
   onClose: () => void;
 }) {
+  const reduced = useReducedMotion();
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    panelRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
   return (
     <motion.div
       className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-6"
-      initial={{ opacity: 0 }}
+      initial={reduced ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={reduced ? undefined : { opacity: 0 }}
+      transition={{ duration: reduced ? 0 : 0.25 }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={product.name}
     >
       <motion.div
-        className="glass w-full max-w-lg rounded-3xl p-8 text-offwhite"
-        initial={{ scale: 0.94, y: 16, opacity: 0 }}
+        ref={panelRef}
+        tabIndex={-1}
+        className="glass w-full max-w-lg rounded-3xl p-8 text-offwhite outline-none"
+        initial={reduced ? false : { scale: 0.94, y: 16, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
-        exit={{ scale: 0.94, y: 16, opacity: 0 }}
-        transition={{ type: "tween", ease: "easeOut", duration: 0.32 }}
+        exit={reduced ? undefined : { scale: 0.94, y: 16, opacity: 0 }}
+        transition={{ duration: reduced ? 0 : 0.32 }}
         onClick={(e) => e.stopPropagation()}
       >
         <ProductVisual product={product} shine className="aspect-[4/3] w-full" />
@@ -47,7 +63,7 @@ export default function BringToLightModal({
           </p>
         </div>
         <div className="mt-6 flex items-center gap-3">
-          <AddToCartButton id={product.id} />
+          <AddToCartButton product={product} />
           <button
             onClick={onClose}
             className="text-sm text-offwhite/60 transition-colors hover:text-offwhite"

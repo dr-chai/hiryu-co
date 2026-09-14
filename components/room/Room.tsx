@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { AnimatePresence } from "framer-motion";
 import { byFloor, FLOOR_LABEL } from "@/lib/selectors";
+import { formatHKD } from "@/lib/format";
 import type { Product, Floor as FloorType } from "@/lib/types";
+import ProductVisual from "@/components/ProductVisual";
 import ProductHotspot from "./ProductHotspot";
 import BringToLightModal from "./BringToLightModal";
 
@@ -60,18 +63,44 @@ export default function Room() {
               <p className="mt-3 text-sm text-offwhite/60">{floor.note}</p>
             </div>
 
-            <div className="relative mt-16 h-80 w-full max-w-3xl rounded-3xl border border-offwhite/10">
+            {/* Desktop：hotspot 喺架上 */}
+            <div className="relative mt-16 hidden h-80 w-full max-w-3xl rounded-3xl border border-offwhite/10 sm:block">
               {items.map((p) => (
                 <ProductHotspot key={p.id} product={p} onSelect={setActive} />
+              ))}
+            </div>
+
+            {/* Mobile：stacked grid */}
+            <div className="mt-10 grid w-full max-w-3xl grid-cols-2 gap-4 sm:hidden">
+              {items.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => setActive(p)}
+                  className="text-left"
+                >
+                  <ProductVisual
+                    product={p}
+                    decorative
+                    className="aspect-square w-full ring-1 ring-teal/30"
+                  />
+                  <span className="mt-1.5 block text-xs text-offwhite/90">
+                    {p.name}
+                    <span className="ml-1.5 text-teal">
+                      {formatHKD(p.price.amount)}
+                    </span>
+                  </span>
+                </button>
               ))}
             </div>
           </section>
         );
       })}
 
-      {active && (
-        <BringToLightModal product={active} onClose={() => setActive(null)} />
-      )}
+      <AnimatePresence>
+        {active && (
+          <BringToLightModal product={active} onClose={() => setActive(null)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

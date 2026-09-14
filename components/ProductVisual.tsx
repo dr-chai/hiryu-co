@@ -24,17 +24,26 @@ export default function ProductVisual({
   product,
   shine = false,
   className = "",
+  decorative = false,
 }: {
   product: Product;
   shine?: boolean;
   className?: string;
+  decorative?: boolean;
 }) {
   const a = hex(product.colors[0] ?? "", "#3a3a38");
   const b = product.colors.length > 1 ? hex(product.colors[1], a) : a;
+  const Tag = decorative ? "span" : "div";
+  const a11y = decorative
+    ? {}
+    : {
+        role: "img",
+        "aria-label": `${product.name} — ${product.material.join("、")}`,
+      };
 
   return (
-    <div
-      className={`relative overflow-hidden rounded-2xl ${className}`}
+    <Tag
+      className={`relative block overflow-hidden rounded-2xl ${className}`}
       style={{
         background: `linear-gradient(135deg, ${a} 0%, ${b} 100%)`,
         boxShadow: shine
@@ -43,20 +52,19 @@ export default function ProductVisual({
         filter: shine ? "brightness(1.08)" : "brightness(0.9) saturate(0.82)",
         transition: "filter 0.5s ease, box-shadow 0.5s ease",
       }}
-      role="img"
-      aria-label={`${product.name} — ${product.material.join("、")}`}
+      {...a11y}
     >
-      <div
-        className="absolute inset-0"
+      <span
+        className="absolute inset-0 block"
         style={{
           background:
             "radial-gradient(circle at 30% 22%, rgba(255,255,255,0.34), transparent 46%)",
         }}
       />
-      <div
-        className="absolute left-4 top-5 h-px w-1/2 bg-white/40"
+      <span
+        className="absolute left-4 top-5 block h-px w-1/2 bg-white/40"
         style={{ transform: "rotate(-18deg)" }}
       />
-    </div>
+    </Tag>
   );
 }

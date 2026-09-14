@@ -28,7 +28,11 @@ export default function ProductCard({ product }: { product: Product }) {
           </p>
           <h3 className="mt-1 text-sm font-medium">{product.name}</h3>
         </div>
-        <p className="text-sm tabular-nums">{formatHKD(product.price.amount)}</p>
+        {product.stock <= 0 ? (
+          <p className="text-sm text-cinnabar-deep">已售罄</p>
+        ) : (
+          <p className="text-sm tabular-nums">{formatHKD(product.price.amount)}</p>
+        )}
       </div>
     </Link>
   );

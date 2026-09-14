@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCart } from "@/lib/store";
 import { useUI } from "@/lib/ui-store";
 import { getProductById } from "@/lib/selectors";
@@ -14,6 +15,18 @@ export default function CartDrawer() {
   const remove = useCart((s) => s.remove);
   const cartOpen = useUI((s) => s.cartOpen);
   const setCartOpen = useUI((s) => s.setCartOpen);
+  const reduced = useReducedMotion();
+  const panelRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!cartOpen) return;
+    panelRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setCartOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [cartOpen, setCartOpen]);
 
   const lines = Object.entries(items)
     .map(([id, qty]) => ({ product: getProductById(id), qty }))
@@ -29,18 +42,22 @@ export default function CartDrawer() {
         <>
           <motion.div
             className="fixed inset-0 z-40 bg-black/50"
-            initial={{ opacity: 0 }}
+            initial={reduced ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={reduced ? undefined : { opacity: 0 }}
+            transition={{ duration: reduced ? 0 : 0.2 }}
             onClick={() => setCartOpen(false)}
           />
           <motion.aside
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-offwhite text-obsidian shadow-2xl"
-            initial={{ x: "100%" }}
+            ref={panelRef}
+            tabIndex={-1}
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-offwhite text-obsidian shadow-2xl outline-none"
+            initial={reduced ? false : { x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
+            exit={reduced ? undefined : { x: "100%" }}
+            transition={{ duration: reduced ? 0 : 0.3 }}
             role="dialog"
+            aria-modal="true"
             aria-label="購物袋"
           >
             <div className="flex items-center justify-between border-b border-obsidian/10 px-6 py-5">
@@ -79,6 +96,7 @@ export default function CartDrawer() {
                     >
                       <ProductVisual
                         product={product!}
+                        decorative
                         className="h-16 w-16 shrink-0"
                       />
                       <div className="flex flex-1 flex-col">

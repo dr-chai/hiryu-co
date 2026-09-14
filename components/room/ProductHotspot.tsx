@@ -23,6 +23,7 @@ export default function ProductHotspot({
     >
       <ProductVisual
         product={product}
+        decorative
         className="aspect-square w-full ring-1 ring-teal/40 transition-all duration-300 group-hover:scale-105 group-hover:specular-ring"
       />
       <span className="mt-1.5 block text-center text-xs text-offwhite/90">
