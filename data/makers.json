@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "tsuchi-gaeshi",
+    "name": "土返し工房",
+    "origin": "香港",
+    "line": "瑕疵唔係缺陷，係件嘢活過嘅證明。",
+    "productIds": ["sku-001", "sku-005"]
+  },
+  {
+    "slug": "hikaru-glass",
+    "name": "光る硝子工房",
+    "origin": "香港",
+    "line": "玻璃喺火入面成形，出嚟先見到光。",
+    "productIds": ["sku-003"]
+  },
+  {
+    "slug": "yama-mokko",
+    "name": "山の木工所",
+    "origin": "日本",
+    "line": "木有自己嘅紋路，我哋只係順住佢。",
+    "productIds": ["sku-008"]
+  }
+]

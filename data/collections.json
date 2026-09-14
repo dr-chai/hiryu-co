@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "wear-the-light",
+    "title": "光を纏う",
+    "en": "Wear the Light",
+    "description": "個人風格選物——飾物、配件、隨身小物。",
+    "accent": "teal"
+  },
+  {
+    "slug": "rooms-with-light",
+    "title": "光のある部屋",
+    "en": "Rooms with Light",
+    "description": "居家、杯具、香氛、燈具、桌面選物。",
+    "accent": "amber"
+  },
+  {
+    "slug": "everyday-margin",
+    "title": "日常の余白",
+    "en": "Everyday Margin",
+    "description": "文具、數碼小物、書本、生活設計物。",
+    "accent": "teal"
+  }
+]

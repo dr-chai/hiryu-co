@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── 顏色：黑曜石底 + 琉璃光 ── */
+  --color-obsidian: #10100f;
+  --color-offwhite: #f3f0e9;
+  --color-night: #203047;
+  --color-teal: #65c8c2;
+  --color-teal-deep: #1f6f6a;
+  --color-amber: #e3ae5c;
+  --color-amber-deep: #8a5a1e;
+  --color-cinnabar: #c84a40;
+  --color-cinnabar-deep: #a63b32;
+
+  /* ── 字體：思源黑體（功能）＋ 思源宋體（statement）── */
+  --font-sans: var(--font-hiryu-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-hiryu-serif), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-obsidian);
+    color: var(--color-offwhite);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-teal);
+    color: var(--color-obsidian);
+  }
+  /* 焦點可見（無障礙） */
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Liquid Glass —— 只用喺 nav／CTA／cart／modal */
+  .glass {
+    background: color-mix(in srgb, var(--color-obsidian) 52%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid color-mix(in srgb, var(--color-offwhite) 14%, transparent);
+  }
+  .glass-light {
+    background: color-mix(in srgb, var(--color-offwhite) 60%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid color-mix(in srgb, var(--color-obsidian) 10%, transparent);
+  }
+  /* 薄折射光邊（specular ring）—— 商品 hover 用 */
+  .specular-ring {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-teal) 55%, transparent),
+      0 0 28px -8px color-mix(in srgb, var(--color-teal) 50%, transparent);
+  }
+  .glow-teal {
+    filter: drop-shadow(
+      0 0 16px color-mix(in srgb, var(--color-teal) 40%, transparent)
+    );
+  }
+}
+
+/* 尊重 reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
