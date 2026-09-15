@@ -16,11 +16,23 @@ export default function Hero() {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-obsidian obsidian-glow px-6">
-      {/* 焦散光動畫背景 */}
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-obsidian px-6">
+      {/* 背景 video：光入水焦散光（reduced-motion 時唔播） */}
+      {!reduced && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/videos/hiryu-hero-bg.mp4"
+        />
+      )}
+      {/* 深色漸層壓暗，令文字可讀 + 有質感 */}
       <div
         aria-hidden
-        className="caustic-anim pointer-events-none absolute inset-0"
+        className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/30 to-obsidian/80"
       />
 
       <div className="relative z-10 flex flex-col items-center">

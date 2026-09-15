@@ -7,7 +7,7 @@ export default function LogoMorph() {
 
   if (reduced) {
     return (
-      <span className="font-serif text-[8rem] font-extralight leading-none text-teal glow-teal">
+      <span className="font-serif text-[8rem] font-extralight leading-none text-offwhite glow-teal">
         輝
       </span>
     );
@@ -35,7 +35,7 @@ export default function LogoMorph() {
         廢
       </motion.span>
       <motion.span
-        className="absolute font-serif text-[9rem] font-extralight leading-none text-teal glow-teal"
+        className="absolute font-serif text-[9rem] font-extralight leading-none text-offwhite glow-teal"
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.9, delay: 1.6, ease: "easeOut" }}
