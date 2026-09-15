@@ -1,4 +1,5 @@
 export type Floor = "B1" | "F1" | "F2";
+export type ProductKind = "physical" | "digital";
 
 export interface Product {
   id: string;
@@ -7,6 +8,8 @@ export interface Product {
   name: string;
   price: { currency: "HKD"; amount: number };
   stock: number;
+  type: ProductKind;
+  file?: string;
   material: string[];
   story: string;
   category: string; // collection slug

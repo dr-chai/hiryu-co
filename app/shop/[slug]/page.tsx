@@ -26,6 +26,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
   const { slug } = await props.params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
+  const isDigital = product.type === "digital";
 
   return (
     <div className="min-h-screen bg-offwhite px-6 pb-24 pt-28 text-obsidian">
@@ -37,8 +38,16 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
           ← 返去選物
         </Link>
 
-        <div className="mt-8 grid gap-10 md:grid-cols-2">
-          <ProductVisual product={product} shine className="aspect-[4/5] w-full" />
+        <div className="mt-8 grid items-start gap-10 md:grid-cols-2">
+          <ProductVisual
+            product={product}
+            shine
+            className={
+              isDigital
+                ? "mx-auto aspect-[9/16] w-full max-w-xs"
+                : "aspect-[4/5] w-full"
+            }
+          />
 
           <div>
             <p className="text-xs tracking-[0.3em] text-teal-deep">
@@ -46,8 +55,14 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
             </p>
             <h1 className="mt-3 font-serif text-4xl">{product.name}</h1>
             <p className="mt-2 text-sm text-obsidian/60">
-              {formatHKD(product.price.amount)}
-              <span className="ml-2 text-xs">親民價</span>
+              {isDigital ? (
+                <span className="text-teal-deep">免費下載</span>
+              ) : (
+                <>
+                  {formatHKD(product.price.amount)}
+                  <span className="ml-2 text-xs">親民價</span>
+                </>
+              )}
             </p>
 
             <p className="mt-6 text-base leading-relaxed text-obsidian/80">

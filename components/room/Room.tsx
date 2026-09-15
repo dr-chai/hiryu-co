@@ -49,11 +49,11 @@ export default function Room() {
       </p>
 
       {FLOORS.map((floor) => {
-        const items = byFloor(floor.id);
+        const items = byFloor(floor.id).filter((p) => p.type !== "digital");
         return (
           <section
             key={floor.id}
-            className={`${floor.bg} relative flex min-h-screen flex-col items-center justify-center px-6 py-24`}
+            className={`${floor.bg} obsidian-glow relative flex min-h-screen flex-col items-center justify-center px-6 py-24`}
           >
             <div className="text-center">
               <p className="text-xs tracking-[0.4em] text-teal">{floor.level}</p>

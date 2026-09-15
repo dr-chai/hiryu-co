@@ -15,6 +15,18 @@ export default function AddToCartButton({
   const add = useCart((s) => s.add);
   const soldOut = product.stock <= 0;
 
+  if (product.type === "digital") {
+    return (
+      <a
+        href={product.file ?? "#"}
+        download
+        className="inline-flex items-center gap-2 rounded-full bg-obsidian/90 px-6 py-3 text-sm text-offwhite ring-1 ring-teal/60 transition-all hover:bg-obsidian hover:ring-teal hover:shadow-[0_0_24px_-4px_rgba(101,200,194,0.5)]"
+      >
+        <span aria-hidden>↓</span> 免費下載
+      </a>
+    );
+  }
+
   if (soldOut) {
     return (
       <span

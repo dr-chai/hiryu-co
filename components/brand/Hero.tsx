@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 export default function Hero() {
   const reduced = useReducedMotion();
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center bg-obsidian px-6">
+    <section className="relative flex min-h-screen flex-col items-center justify-center bg-obsidian obsidian-glow px-6">
       <LogoMorph />
       <motion.div
         className="mt-10 flex flex-col gap-4 sm:flex-row"

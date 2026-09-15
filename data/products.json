@@ -29,7 +29,8 @@
       "y": 0.58,
       "z": 0
     },
-    "stock": 12
+    "stock": 12,
+    "type": "physical"
   },
   {
     "id": "sku-002",
@@ -60,7 +61,8 @@
       "y": 0.6,
       "z": 0
     },
-    "stock": 8
+    "stock": 8,
+    "type": "physical"
   },
   {
     "id": "sku-003",
@@ -92,7 +94,8 @@
       "y": 0.55,
       "z": 0
     },
-    "stock": 20
+    "stock": 20,
+    "type": "physical"
   },
   {
     "id": "sku-004",
@@ -122,7 +125,8 @@
       "y": 0.42,
       "z": 0
     },
-    "stock": 15
+    "stock": 15,
+    "type": "physical"
   },
   {
     "id": "sku-005",
@@ -153,7 +157,8 @@
       "y": 0.78,
       "z": 0
     },
-    "stock": 10
+    "stock": 10,
+    "type": "physical"
   },
   {
     "id": "sku-006",
@@ -184,7 +189,8 @@
       "y": 0.5,
       "z": 0
     },
-    "stock": 18
+    "stock": 18,
+    "type": "physical"
   },
   {
     "id": "sku-007",
@@ -216,7 +222,8 @@
       "y": 0.5,
       "z": 0
     },
-    "stock": 0
+    "stock": 0,
+    "type": "physical"
   },
   {
     "id": "sku-008",
@@ -246,7 +253,8 @@
       "y": 0.68,
       "z": 0
     },
-    "stock": 6
+    "stock": 6,
+    "type": "physical"
   },
   {
     "id": "sku-009",
@@ -277,6 +285,143 @@
       "y": 0.32,
       "z": 0
     },
-    "stock": 30
+    "stock": 30,
+    "type": "physical"
+  },
+  {
+    "id": "dgt-001",
+    "slug": "hiryu-caustic-wallpaper",
+    "brand": "HIRYU",
+    "name": "光の棚 手機桌布",
+    "price": {
+      "currency": "HKD",
+      "amount": 0
+    },
+    "stock": 999,
+    "type": "digital",
+    "file": "/products/hiryu-caustic-wallpaper.png",
+    "material": [
+      "數碼影像",
+      "9:16 手機桌布"
+    ],
+    "story": "一束焦散光，喺黑曜石上面流動。每次開機，都係你每日嘅第一道光。",
+    "category": "wear-the-light",
+    "floor": "F2",
+    "origin": "數碼",
+    "colors": [
+      "琉璃青",
+      "琥珀金"
+    ],
+    "images": {
+      "raw": "",
+      "shine": ""
+    },
+    "position": {
+      "x": 0.22,
+      "y": 0.45,
+      "z": 0
+    }
+  },
+  {
+    "id": "dgt-002",
+    "slug": "hiryu-iridescent-wallpaper",
+    "brand": "HIRYU",
+    "name": "輝琉之間 手機桌布",
+    "price": {
+      "currency": "HKD",
+      "amount": 0
+    },
+    "stock": 999,
+    "type": "digital",
+    "file": "/products/hiryu-iridescent-wallpaper.png",
+    "material": [
+      "數碼影像",
+      "9:16 手機桌布"
+    ],
+    "story": "虹彩玻璃折射出兩種光——睇你企喺邊一面。裝喺手機，就係隨身嘅輝琉之間。",
+    "category": "wear-the-light",
+    "floor": "F2",
+    "origin": "數碼",
+    "colors": [
+      "虹彩",
+      "青綠",
+      "琥珀"
+    ],
+    "images": {
+      "raw": "",
+      "shine": ""
+    },
+    "position": {
+      "x": 0.5,
+      "y": 0.4,
+      "z": 0
+    }
+  },
+  {
+    "id": "dgt-003",
+    "slug": "hiryu-light-beam-wallpaper",
+    "brand": "HIRYU",
+    "name": "日常の余白 手機桌布",
+    "price": {
+      "currency": "HKD",
+      "amount": 0
+    },
+    "stock": 999,
+    "type": "digital",
+    "file": "/products/hiryu-light-beam-wallpaper.png",
+    "material": [
+      "數碼影像",
+      "9:16 手機桌布"
+    ],
+    "story": "一束光柱穿過黑暗，落喺地面散開。留白，就係最好嘅風景。",
+    "category": "wear-the-light",
+    "floor": "F2",
+    "origin": "數碼",
+    "colors": [
+      "琉璃青"
+    ],
+    "images": {
+      "raw": "",
+      "shine": ""
+    },
+    "position": {
+      "x": 0.78,
+      "y": 0.45,
+      "z": 0
+    }
+  },
+  {
+    "id": "dgt-004",
+    "slug": "hiryu-smoked-glass-wallpaper",
+    "brand": "HIRYU",
+    "name": "光を纏う 手機桌布",
+    "price": {
+      "currency": "HKD",
+      "amount": 0
+    },
+    "stock": 999,
+    "type": "digital",
+    "file": "/products/hiryu-smoked-glass-wallpaper.png",
+    "material": [
+      "數碼影像",
+      "9:16 手機桌布"
+    ],
+    "story": "霧面玻璃，光滲出嚟。克制，但唔失光芒。",
+    "category": "wear-the-light",
+    "floor": "F2",
+    "origin": "數碼",
+    "colors": [
+      "霧灰",
+      "琉璃青"
+    ],
+    "images": {
+      "raw": "",
+      "shine": ""
+    },
+    "position": {
+      "x": 0.5,
+      "y": 0.72,
+      "z": 0
+    }
   }
 ]
